@@ -6,8 +6,8 @@ from faker import Faker
 import file_operations
 
 
-directory_name = 'C:/lesson5/chars'
-letters_mapping = {
+DIRECTORY_NAME = 'C:/lesson5/chars'
+LETTERS_MAPPING = {
     'а': 'а͠', 
     'б': 'б̋',
     'в': 'в͒͠',
@@ -77,7 +77,7 @@ letters_mapping = {
     ' ': ' '
 }
 
-skills = [
+SKILLS = [
     'Стремительный прыжок',
     'Электрический выстрел',
     'Ледяной удар',
@@ -88,16 +88,13 @@ skills = [
     'Огненный заряд'
 ]
 
-runic_skills = []
-
-fake = Faker('ru_RU')
-
 def main():
+    runic_skills = []
+    fake = Faker('ru_RU')
+    os.makedirs(DIRECTORY_NAME, mode=0o777, exist_ok=True)
 
-    os.makedirs(directory_name, mode=0o777, exist_ok=True)
-
-    for skill in skills:   
-        for keys,values in letters_mapping.items():
+    for skill in SKILLS:   
+        for keys,values in LETTERS_MAPPING.items():
             skill=skill.replace('{}'.format(keys),
                 '{}'.format(values))
             if keys==(' '):
