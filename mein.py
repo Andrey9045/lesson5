@@ -96,13 +96,10 @@ def main():
 
     os.makedirs(directory_name, mode=0o777, exist_ok=True)
 
-    for skill in skills:
-    
+    for skill in skills:   
         for keys,values in letters_mapping.items():
-
             skill=skill.replace('{}'.format(keys),
                 '{}'.format(values))
-
             if keys==(' '):
                 runic_skills.append(skill)
 
