@@ -4,7 +4,7 @@ from faker import Faker
 import file_operations
 
 
-DIRECTORY_NAME = 'C:/lesson5/chars'
+DIRECTORY_NAME = 'chars'
 LETTERS_MAPPING = {
     'а': 'а͠', 
     'б': 'б̋',
@@ -72,7 +72,7 @@ LETTERS_MAPPING = {
     'Э': 'Э͒͠͠', 
     'Ю': 'Ю̋͠', 
     'Я': 'Я̋',
-    ' ': ' '
+    ' ': ' ',
 }
 
 SKILLS = [
@@ -83,8 +83,9 @@ SKILLS = [
     'Кислотный взгляд',
     'Тайный побег',
     'Ледяной выстрел',
-    'Огненный заряд'
+    'Огненный заряд',
 ]
+
 
 def main():
     runic_skills = []
@@ -92,33 +93,36 @@ def main():
     os.makedirs(DIRECTORY_NAME, mode=0o777, exist_ok=True)
 
     for skill in SKILLS:   
-        for keys,values in LETTERS_MAPPING.items():
-            skill=skill.replace('{}'.format(keys),
-                '{}'.format(values))
-            if keys==(' '):
+        for keys, values in LETTERS_MAPPING.items():
+            skill = skill.replace('{}'.format(keys),
+            '{}'.format(values))
+            if keys == (' '):
                 runic_skills.append(skill)
 
     for i in range(10):
         for a in range(10):
-            skill_character=random.sample(runic_skills,3)
-            context={
-	        'first_name': fake.first_name(),
-	        'last_name': fake.last_name(),
-	        'job': fake.job(),
-	        'town':fake.city(),
-	        'strength':random.randint(3,18),
-	        'agility':random.randint(3,18),
-	        'endurance':random.randint(3,18),
-	        'intelligence':random.randint(3,18),
-	        'luck':random.randint(3,18),
-	        'skill_1':skill_character[0],
-	        'skill_2':skill_character[1],
-	        'skill_3':skill_character[2]}
+            skill_character = random.sample(runic_skills, 3)
+            context = {
+	            'first_name': fake.first_name(),
+	            'last_name': fake.last_name(),
+	            'job': fake.job(),
+	            'town': fake.city(),
+	            'strength': random.randint(3, 18),
+	            'agility': random.randint(3, 18),
+	            'endurance': random.randint(3, 18),
+	            'intelligence': random.randint(3, 18),
+	            'luck': random.randint(3, 18),
+	            'skill_1': skill_character[0],
+	            'skill_2': skill_character[1],
+	            'skill_3': skill_character[2],
+                }
 
             file_operations.render_template(
                 'charsheet.svg', 
                 'chars/charsheet-{}.svg'.format(a), 
-                context)
-        
+                context,
+                )
+ 
+
 if __name__ == '__main__':
     main()
