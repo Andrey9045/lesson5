@@ -94,8 +94,7 @@ def main():
 
     for skill in SKILLS:   
         for keys, values in LETTERS_MAPPING.items():
-            skill = skill.replace('{}'.format(keys),
-            '{}'.format(values))
+            skill = skill.replace('{}'.format(keys),'{}'.format(values))
             if keys == (' '):
                 runic_skills.append(skill)
 
@@ -103,18 +102,18 @@ def main():
         for a in range(10):
             skill_character = random.sample(runic_skills, 3)
             context = {
-	            'first_name': fake.first_name(),
-	            'last_name': fake.last_name(),
-	            'job': fake.job(),
-	            'town': fake.city(),
-	            'strength': random.randint(3, 18),
-	            'agility': random.randint(3, 18),
-	            'endurance': random.randint(3, 18),
-	            'intelligence': random.randint(3, 18),
-	            'luck': random.randint(3, 18),
-	            'skill_1': skill_character[0],
-	            'skill_2': skill_character[1],
-	            'skill_3': skill_character[2],
+                'first_name': fake.first_name(),
+                'last_name': fake.last_name(),
+                'job': fake.job(),
+                'town': fake.city(),
+                'strength': random.randint(3, 18),
+                'agility': random.randint(3, 18),
+                'endurance': random.randint(3, 18),
+                'intelligence': random.randint(3, 18),
+                'luck': random.randint(3, 18),
+                'skill_1': skill_character[0],
+                'skill_2': skill_character[1],
+                'skill_3': skill_character[2],
                 }
 
             file_operations.render_template(
